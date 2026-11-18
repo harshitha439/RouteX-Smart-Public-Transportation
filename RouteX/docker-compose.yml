@@ -1,0 +1,12 @@
+# OPTIONAL: only needed if you want MySQL instead of the built-in H2 database.
+# Usage: DB_ROOT_PASSWORD=yourpass docker compose up -d
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: routex
+    ports: ["3306:3306"]
+    volumes: [routex_db:/var/lib/mysql]
+volumes:
+  routex_db:

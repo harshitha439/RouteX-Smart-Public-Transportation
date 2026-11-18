@@ -1,0 +1,25 @@
+# Runs out of the box with an embedded H2 file database (no MySQL needed).
+# For MySQL: start with  --spring.profiles.active=mysql  (see application-mysql.yml)
+# NOTE: the defaults below are for LOCAL DEVELOPMENT ONLY. Override them via env vars for any real deployment.
+spring:
+  application:
+    name: routex
+  datasource:
+    url: ${DB_URL:jdbc:h2:file:./data/routex;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+server:
+  port: 8080
+routex:
+  jwt:
+    secret: ${ROUTEX_JWT_SECRET:dev-only-secret-change-me-dev-only-secret-change-me}
+    expiration-ms: ${ROUTEX_JWT_EXPIRATION_MS:86400000}
+  cors:
+    allowed-origins: ${ROUTEX_CORS_ORIGINS:http://localhost:5173}
+  admin:
+    email: ${ROUTEX_ADMIN_EMAIL:admin@routex.local}
+    password: ${ROUTEX_ADMIN_PASSWORD:Admin@12345}

@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:routex;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+routex:
+  jwt:
+    secret: test-secret-test-secret-test-secret-123456
+    expiration-ms: 3600000
+  cors:
+    allowed-origins: http://localhost:5173
+  admin:
+    email: admin@test.com
+    password: Admin@12345
